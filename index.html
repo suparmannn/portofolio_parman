@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Portfolio | M. Suparman</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #f0f2f5;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+        
+        /* Warna kustom */
+        .bg-navy { background-color: #051622; }
+        .bg-navy-dark { background-color: #030f18; }
+        .text-navy { color: #051622; }
+        .text-orange { color: #FF851B; }
+        .bg-orange { background-color: #FF851B; }
+        .border-orange { border-color: #FF851B; }
+        .ring-orange { --tw-ring-color: #FF851B; }
+        
+        /* Container mobile */
+        .mobile-container {
+            max-width: 428px;
+            margin: 0 auto;
+            background: #f8fafc;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Efek card modern */
+        .card-modern {
+            background: white;
+            border-radius: 24px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .card-modern:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Gradient border untuk card tertentu */
+        .gradient-border {
+            position: relative;
+            background: white;
+            border-radius: 24px;
+        }
+        
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 24px;
+            padding: 1px;
+            background: linear-gradient(135deg, #FF851B, #051622);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+        
+        /* Timeline style */
+        .timeline-dot {
+            position: relative;
+            padding-left: 28px;
+        }
+        
+        .timeline-dot::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #FF851B;
+            border: 2px solid #fff;
+            box-shadow: 0 0 0 2px #FF851B;
+        }
+        
+        .timeline-dot::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 20px;
+            width: 2px;
+            height: calc(100% - 12px);
+            background: linear-gradient(to bottom, #FF851B, #e2e8f0);
+        }
+        
+        .timeline-dot:last-child::after {
+            display: none;
+        }
+        
+        /* Skill tags */
+        .skill-tag {
+            display: inline-block;
+            padding: 6px 14px;
+            background: #f1f5f9;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #1e293b;
+            transition: all 0.2s ease;
+        }
+        
+        .skill-tag:hover {
+            background: #FF851B;
+            color: white;
+            transform: scale(1.02);
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e2e8f0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #FF851B;
+            border-radius: 10px;
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Button hover effect */
+        .btn-hover {
+            transition: all 0.2s ease;
+        }
+        .btn-hover:active {
+            transform: scale(0.97);
+        }
+        
+        /* Project image container */
+        .project-img {
+            height: 180px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .project-card:hover .project-img {
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body>
+    <div class="mobile-container">
+        
+        <!-- NAVBAR -->
+        <nav class="bg-navy px-5 py-4 sticky top-0 z-50 shadow-xl">
+            <div class="flex justify-between items-center">
+                <h1 class="text-white font-bold text-xl tracking-tight">
+                    Hi <span class="text-orange"> everyone!</span>   
+                </h1>
+                <a href="https://wa.me/6282114432475" target="_blank" 
+                   class="bg-orange text-white px-5 py-2 rounded-full text-sm font-semibold shadow-lg shadow-orange-500/40 flex items-center gap-1 btn-hover">
+                    <i class="fab fa-whatsapp text-sm"></i> Hire Me
+                </a>
+            </div>
+        </nav>
+        
+        <!-- HERO SECTION (Tanpa Foto Profil) -->
+        <section class="bg-navy px-6 py-12 text-center relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-72 h-72 bg-orange opacity-5 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 w-48 h-48 bg-white opacity-5 rounded-full blur-3xl"></div>
+            <div class="relative z-10">
+                <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-1.5 rounded-full mb-5">
+                    <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                    <span class="text-xs text-white/80">Tersedia untuk kolaborasi</span>
+                </div>
+                <h2 class="text-3xl font-bold mb-3 leading-tight text-white">
+                    System Analyst & <br>
+                    <span class="text-orange">Project Coordinator (Jr.Project manager)</span>
+                </h2>
+                <p class="text-gray-300 text-sm max-w-xs mx-auto mb-6 leading-relaxed">
+                    Berpengalaman lebih dari 7 tahun dalam menjadi System Analysis dan 1 tahun menjadi Jr.Project manager .
+                </p>
+                <div class="flex flex-col items-center gap-3">
+                    <div class="flex gap-3">
+                        <a href="#projects" class="bg-orange text-white px-6 py-2.5 rounded-xl font-medium shadow-lg shadow-orange-500/30 btn-hover">
+                            Lihat Project
+                        </a>
+                        <a href="#contact" class="border border-orange text-orange px-6 py-2.5 rounded-xl font-medium hover:bg-orange hover:text-white transition-all btn-hover">
+                            Hubungi Saya
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- INFO KONTAK & SOSIAL -->
+        <section class="px-5 py-6 bg-white border-b border-gray-100">
+            <div class="flex flex-wrap justify-center gap-4 text-sm">
+                <div class="flex items-center gap-2 text-gray-600">
+                    <i class="fas fa-phone-alt text-orange text-xs"></i>
+                    <span>0821-1443-2475</span>
+                </div>
+                <div class="flex items-center gap-2 text-gray-600">
+                    <i class="fas fa-envelope text-orange text-xs"></i>
+                    <span>psuparman23@gmail.com</span>
+                </div>
+                <div class="flex items-center gap-2 text-gray-600">
+                    <i class="fab fa-linkedin text-orange text-xs"></i>
+                    <span>http://www.linkedin.com/in/farman-m-258965171</span>
+                </div>
+                <div class="flex items-center gap-2 text-gray-600">
+                    <i class="fas fa-map-marker-alt text-orange text-xs"></i>
+                    <span>Tangerang, Banten</span>
+                </div>
+            </div>
+        </section>
+        
+        <!-- TENTANG / RINGKASAN PROFESIONAL -->
+        <section class="px-5 py-8">
+            <div class="card-modern p-6 gradient-border">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-8 h-8 bg-orange/10 rounded-xl flex items-center justify-center">
+                        <i class="fas fa-user-tie text-orange text-sm"></i>
+                    </div>
+                    <h3 class="font-bold text-navy text-lg">Profil Profesional</h3>
+                </div>
+                <p class="text-gray-600 text-sm leading-relaxed">
+                    Senior IT dengan pengalaman System Analysis.
+                    Pernah sebagai Project Coordinator (Jr.Project manager) khususnya di sistem Financial Technology di PT Teknologi Operator Prima. Mampu mengelola SDLC penuh, 
+                    mulai dari mengumpulkan requirement bisnis yang kompleks (SRS/TFD) hingga desain teknis (UML) dan pengujian 
+                    end-to-end (Manual & API). Ahli dalam menjembatani kebutuhan bisnis dengan implementasi teknis serta 
+                    memiliki pemahaman mendalam tentang PostgreSQL dan RESTful API.
+                </p>
+            </div>
+        </section>
+        
+        <!-- PENDIDIKAN -->
+        <section class="px-5 py-4">
+            <div class="flex items-center gap-3 mb-5">
+                <div class="w-9 h-9 bg-navy rounded-xl flex items-center justify-center">
+                    <i class="fas fa-graduation-cap text-orange text-sm"></i>
+                </div>
+                <h3 class="font-bold text-navy text-xl">Pendidikan</h3>
+            </div>
+            
+            <div class="card-modern p-5">
+                <div class="timeline-dot">
+                    <div class="flex justify-between items-start flex-wrap gap-2 mb-1">
+                        <h4 class="font-bold text-navy">S1 Sistem Informasi</h4>
+                        <span class="text-xs font-semibold text-orange bg-orange/10 px-2 py-0.5 rounded-full">2017 - 2021</span>
+                    </div>
+                    <p class="text-gray-500 text-sm font-medium">STMIK INSAN PEMBANGUNAN - Tangerang</p>
+                    <p class="text-sm text-gray-600 mt-2">IPK: 3,79 / 4,00</p>
+                    <p class="text-xs text-gray-500 mt-1">✨ Meraih beasiswa selama 3 semester.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- PENDIDIKAN NONFORMAL & SERTIFIKASI -->
+        <section class="px-5 py-4">
+            <div class="flex items-center gap-3 mb-5">
+                <div class="w-9 h-9 bg-navy rounded-xl flex items-center justify-center">
+                    <i class="fas fa-certificate text-orange text-sm"></i>
+                </div>
+                <h3 class="font-bold text-navy text-xl">Sertifikasi & Kursus</h3>
+            </div>
+            
+            <div class="space-y-3">
+                <div class="card-modern p-4">
+                    <div class="flex items-start gap-3">
+                        <i class="fas fa-database text-orange mt-0.5"></i>
+                        <div>
+                            <h4 class="font-semibold text-navy text-sm">Associate Data Scientist</h4>
+                            <p class="text-xs text-gray-500">Digital Skola · Juli 2022 - Okt 2022</p>
+                            <p class="text-xs text-gray-600 mt-1">Mempelajari dasar-dasar pemrosesan data untuk dianalisis sebagai informasi akurat dalam pengambilan keputusan.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-modern p-4">
+                    <div class="flex items-start gap-3">
+                        <i class="fas fa-microchip text-orange mt-0.5"></i>
+                        <div>
+                            <h4 class="font-semibold text-navy text-sm">BNSP - Associate Data Scientist</h4>
+                            <p class="text-xs text-gray-500">Badan Nasional Sertifikasi Profesi · 2022</p>
+                            <p class="text-xs text-gray-600">Nomor Sertifikat: TIK 1565 23533 2022</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-modern p-4">
+                    <div class="flex items-start gap-3">
+                        <i class="fas fa-leaf text-orange mt-0.5"></i>
+                        <div>
+                            <h4 class="font-semibold text-navy text-sm">ISO 14001:2015</h4>
+                            <p class="text-xs text-gray-500">Inovasi Kreasi Mandiri · 2019</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- PENGALAMAN KERJA -->
+        <section class="px-5 py-4">
+            <div class="flex items-center gap-3 mb-5">
+                <div class="w-9 h-9 bg-navy rounded-xl flex items-center justify-center">
+                    <i class="fas fa-briefcase text-orange text-sm"></i>
+                </div>
+                <h3 class="font-bold text-navy text-xl">Pengalaman Kerja</h3>
+            </div>
+            
+            <div class="space-y-4">
+                <!-- Experience 1 -->
+                <div class="card-modern p-5">
+                    <div class="flex justify-between items-start flex-wrap gap-2 mb-2">
+                        <h4 class="font-bold text-navy">System Analyst</h4>
+                        <span class="text-xs font-semibold text-orange bg-orange/10 px-2 py-0.5 rounded-full">Des 2025 - Sekarang</span>
+                    </div>
+                    <p class="text-gray-500 text-sm font-medium mb-2">PT. Teknologi Operator Prima · Tangerang (Kontrak)</p>
+                    <p class="text-sm text-gray-600 mb-3">Melayani peran ganda sebagai Analis dan Koordinator Proyek dalam pengembangan solusi Fintech (SaaS) dan aplikasi keberlanjutan untuk sektor perbankan (BPR).</p>
+                    <ul class="space-y-1.5 text-sm text-gray-600">
+                        <li class="flex items-start gap-2"><i class="fas fa-check-circle text-orange text-xs mt-0.5"></i><span>Memimpin analisis requirement bisnis untuk modul Mobile Banking (SaaS) dan Loan Channeling.</span></li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check-circle text-orange text-xs mt-0.5"></i><span>Membuat dokumentasi teknis FSD dan ERD untuk integritas data.</span></li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check-circle text-orange text-xs mt-0.5"></i><span>Mengembangkan prototype UI/UX dengan HTML & JavaScript.</span></li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check-circle text-orange text-xs mt-0.5"></i><span>Memimpin sprint planning dan bug tracking menggunakan Plane.</span></li>
+                    </ul>
+                </div>
+                
+                <!-- Experience 2 -->
+                <div class="card-modern p-5">
+                    <div class="flex justify-between items-start flex-wrap gap-2 mb-2">
+                        <h4 class="font-bold text-navy">System Analyst</h4>
+                        <span class="text-xs font-semibold text-orange bg-orange/10 px-2 py-0.5 rounded-full">Des 2024 - Des 2025</span>
+                    </div>
+                    <p class="text-gray-500 text-sm font-medium mb-2">PT. SIGMATECH · Jakarta (Penempatan PT. MERLIN INTEGRASI & SOLUSI)</p>
+                    <ul class="space-y-1.5 text-sm text-gray-600">
+                        <li class="flex items-start gap-2"><i class="fas fa-check-circle text-orange text-xs mt-0.5"></i><span>Menganalisis requirement klien ke dokumentasi teknis (SRS & TFD).</span></li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check-circle text-orange text-xs mt-0.5"></i><span>Melakukan QA testing (Manual & API) dengan Postman & Swagger.</span></li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check-circle text-orange text-xs mt-0.5"></i><span>Mendukung klien (HMSI) dalam pembuatan skenario UAT & SIT.</span></li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check-circle text-orange text-xs mt-0.5"></i><span>Mengelola task, sprint, dan bug tracking menggunakan JIRA.</span></li>
+                    </ul>
+                </div>
+                
+                <!-- Experience 3 -->
+                <div class="card-modern p-5">
+                    <div class="flex justify-between items-start flex-wrap gap-2 mb-2">
+                        <h4 class="font-bold text-navy">System Analyst & Marketing</h4>
+                        <span class="text-xs font-semibold text-orange bg-orange/10 px-2 py-0.5 rounded-full">Des 2019 - Jun 2024</span>
+                    </div>
+                    <p class="text-gray-500 text-sm font-medium mb-2">PT. TETATRANS · Jakarta (Part-Time)</p>
+                    <ul class="space-y-1.5 text-sm text-gray-600">
+                        <li class="flex items-start gap-2"><i class="fas fa-check-circle text-orange text-xs mt-0.5"></i><span>Membantu klien menyiapkan test case UAT & SIT.</span></li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check-circle text-orange text-xs mt-0.5"></i><span>Membuat dokumen manual aplikasi untuk User & Admin.</span></li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check-circle text-orange text-xs mt-0.5"></i><span>Mengelola workflow sistem dan pelatihan pengguna.</span></li>
+                    </ul>
+                </div>
+                
+                <!-- Experience 4 -->
+                <div class="card-modern p-5">
+                    <div class="flex justify-between items-start flex-wrap gap-2 mb-2">
+                        <h4 class="font-bold text-navy">Leader Quality Control</h4>
+                        <span class="text-xs font-semibold text-orange bg-orange/10 px-2 py-0.5 rounded-full">Feb 2016 - Des 2024</span>
+                    </div>
+                    <p class="text-gray-500 text-sm font-medium mb-2">PT. Cannet Elektrik Indonesia · Tangerang</p>
+                    <ul class="space-y-1.5 text-sm text-gray-600">
+                        <li class="flex items-start gap-2"><i class="fas fa-check-circle text-orange text-xs mt-0.5"></i><span>Menciptakan proses standar yang meningkatkan jaminan kualitas.</span></li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check-circle text-orange text-xs mt-0.5"></i><span>Membantu pengembangan kebijakan QC.</span></li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check-circle text-orange text-xs mt-0.5"></i><span>Membimbing karyawan QC junior tentang praktik terbaik.</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SKILLS -->
+        <section class="px-5 py-4">
+            <div class="flex items-center gap-3 mb-5">
+                <div class="w-9 h-9 bg-navy rounded-xl flex items-center justify-center">
+                    <i class="fas fa-code text-orange text-sm"></i>
+                </div>
+                <h3 class="font-bold text-navy text-xl">Keahlian</h3>
+            </div>
+            
+            <div class="space-y-5">
+                <div>
+                    <p class="text-sm font-semibold text-navy mb-2">💼 Hard Skill</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag">Design Database</span>
+                        <span class="skill-tag">Technical Writing</span>
+                        <span class="skill-tag">Project Management</span>
+                        <span class="skill-tag">Manual Testing</span>
+                        <span class="skill-tag">API Testing</span>
+                        <span class="skill-tag">Data Visualization</span>
+                        <span class="skill-tag">Quality Control</span>
+                        <span class="skill-tag">UML</span>
+                    </div>
+                </div>
+                <div>
+                    <p class="text-sm font-semibold text-navy mb-2">🤝 Soft Skill</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag">Negosiasi</span>
+                        <span class="skill-tag">Komunikasi</span>
+                        <span class="skill-tag">Problem Solving</span>
+                        <span class="skill-tag">Analisis Kuat</span>
+                        <span class="skill-tag">Kepemimpinan</span>
+                    </div>
+                </div>
+                <div>
+                    <p class="text-sm font-semibold text-navy mb-2">🛠️ Software Skill</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag">MS Office</span>
+                        <span class="skill-tag">Google Data Studio</span>
+                        <span class="skill-tag">Canva</span>
+                        <span class="skill-tag">Android Studio</span>
+                        <span class="skill-tag">Google Colab</span>
+                        <span class="skill-tag">DBeaver</span>
+                        <span class="skill-tag">EA 2019</span>
+                        <span class="skill-tag">dbdraw.io</span>
+                        <span class="skill-tag">Swagger</span>
+                        <span class="skill-tag">Postman</span>
+                        <span class="skill-tag">JIRA</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- PROJECT PORTFOLIO -->
+        <section id="projects" class="px-5 py-4">
+            <div class="flex items-center gap-3 mb-5">
+                <div class="w-9 h-9 bg-navy rounded-xl flex items-center justify-center">
+                    <i class="fas fa-folder-open text-orange text-sm"></i>
+                </div>
+                <h3 class="font-bold text-navy text-xl">Portofolio Project</h3>
+            </div>
+            
+            <div class="space-y-5">
+                <!-- Project 1 -->
+                <div class="card-modern overflow-hidden project-card">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop" alt="Credit Scoring" class="project-img w-full">
+                    <div class="p-5">
+                        <span class="text-xs font-bold text-orange uppercase tracking-wider bg-orange/10 px-2 py-1 rounded-full">Fintech · Data Science</span>
+                        <h4 class="text-lg font-bold text-navy mt-2 mb-2">Software Credit Scoring Tools</h4>
+                        <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                            Aplikasi analisis kelayakan kredit menggunakan Streamlit untuk mempermudah proses audit BPR. 
+                            Tools ini membantu tim analis kredit dalam menilai risiko peminjaman secara lebih objektif dan efisien.
+                        </p>
+                        <a href="https://scoring-danagung-audit-9stkj2ahtscsd9zx7dcbh8.streamlit.app/" target="_blank" 
+                           class="inline-flex items-center justify-center gap-2 w-full bg-navy text-white py-3 rounded-xl font-semibold hover:bg-opacity-90 transition-all btn-hover">
+                            <i class="fas fa-external-link-alt text-xs"></i> View Project
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 2 (konten sama, kamu bisa edit nanti) -->
+                <div class="card-modern overflow-hidden project-card">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=400&fit=crop" alt="Mobile Banking" class="project-img w-full">
+                    <div class="p-5">
+                        <span class="text-xs font-bold text-orange uppercase tracking-wider bg-orange/10 px-2 py-1 rounded-full">Banking · SaaS</span>
+                        <h4 class="text-lg font-bold text-navy mt-2 mb-2">Software Credit Scoring Tools</h4>
+                        <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                            Aplikasi analisis kelayakan kredit menggunakan Streamlit untuk mempermudah proses audit BPR. 
+                            Tools ini membantu tim analis kredit dalam menilai risiko peminjaman secara lebih objektif dan efisien.
+                        </p>
+                        <a href="https://scoring-danagung-audit-9stkj2ahtscsd9zx7dcbh8.streamlit.app/" target="_blank" 
+                           class="inline-flex items-center justify-center gap-2 w-full bg-navy text-white py-3 rounded-xl font-semibold hover:bg-opacity-90 transition-all btn-hover">
+                            <i class="fas fa-external-link-alt text-xs"></i> View Project
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 3 (konten sama, kamu bisa edit nanti) -->
+                <div class="card-modern overflow-hidden project-card">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop" alt="Analytics Dashboard" class="project-img w-full">
+                    <div class="p-5">
+                        <span class="text-xs font-bold text-orange uppercase tracking-wider bg-orange/10 px-2 py-1 rounded-full">Analytics · Dashboard</span>
+                        <h4 class="text-lg font-bold text-navy mt-2 mb-2">Software Credit Scoring Tools</h4>
+                        <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                            Aplikasi analisis kelayakan kredit menggunakan Streamlit untuk mempermudah proses audit BPR. 
+                            Tools ini membantu tim analis kredit dalam menilai risiko peminjaman secara lebih objektif dan efisien.
+                        </p>
+                        <a href="https://scoring-danagung-audit-9stkj2ahtscsd9zx7dcbh8.streamlit.app/" target="_blank" 
+                           class="inline-flex items-center justify-center gap-2 w-full bg-navy text-white py-3 rounded-xl font-semibold hover:bg-opacity-90 transition-all btn-hover">
+                            <i class="fas fa-external-link-alt text-xs"></i> View Project
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- KONTAK / HUBUNGI SAYA -->
+        <section id="contact" class="px-5 py-8 bg-white rounded-t-3xl shadow-2xl mt-4">
+            <div class="text-center mb-6">
+                <h3 class="text-2xl font-bold text-navy mb-2">Hubungi Saya</h3>
+                <p class="text-gray-500 text-sm">Mari berkolaborasi untuk solusi sistem Anda</p>
+            </div>
+            
+            <div class="space-y-3">
+                <a href="http://www.linkedin.com/in/farman-m-258965171" target="_blank" 
+                   class="flex items-center p-4 bg-gray-50 rounded-2xl transition-all hover:bg-blue-50 hover:scale-[1.02]">
+                    <div class="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-200">
+                        <i class="fab fa-linkedin-in text-white text-xl"></i>
+                    </div>
+                    <div class="ml-4 flex-1">
+                        <p class="text-xs text-gray-400 font-medium">Professional Profile</p>
+                        <p class="text-navy font-semibold">LinkedIn</p>
+                    </div>
+                    <i class="fas fa-arrow-right text-gray-300"></i>
+                </a>
+                
+                <a href="https://wa.me/6282114432475" target="_blank" 
+                   class="flex items-center p-4 bg-gray-50 rounded-2xl transition-all hover:bg-green-50 hover:scale-[1.02]">
+                    <div class="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center shadow-lg shadow-green-200">
+                        <i class="fab fa-whatsapp text-white text-xl"></i>
+                    </div>
+                    <div class="ml-4 flex-1">
+                        <p class="text-xs text-gray-400 font-medium">Fast Response</p>
+                        <p class="text-navy font-semibold">WhatsApp</p>
+                    </div>
+                    <i class="fas fa-arrow-right text-gray-300"></i>
+                </a>
+                
+                <a href="mailto:psuparman23@gmail.com" 
+                   class="flex items-center p-4 bg-gray-50 rounded-2xl transition-all hover:bg-orange-50 hover:scale-[1.02]">
+                    <div class="w-12 h-12 bg-orange rounded-xl flex items-center justify-center shadow-lg shadow-orange-100">
+                        <i class="far fa-envelope text-white text-xl"></i>
+                    </div>
+                    <div class="ml-4 flex-1">
+                        <p class="text-xs text-gray-400 font-medium">Send an Email</p>
+                        <p class="text-navy font-semibold">psuparman23@gmail.com</p>
+                    </div>
+                    <i class="fas fa-arrow-right text-gray-300"></i>
+                </a>
+            </div>
+        </section>
+        
+        <!-- FOOTER -->
+        <footer class="bg-navy py-6 text-center">
+            <p class="text-gray-500 text-xs tracking-wider">© 2026 M. Suparman.</p>
+        </footer>
+        
+    </div>
+</body>
+</html>
